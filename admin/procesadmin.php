@@ -1,6 +1,11 @@
 <?php
 // Incluir el archivo de conexión
 include 'valores/conexion.php';
+require_once '../vendor/autoload.php';
+
+// Configurar HTML Purifier
+$config = HTMLPurifier_Config::createDefault();
+$purifier = new HTMLPurifier();
 
 // Insertar los datos
 /*$nombreDeUsuario = $_POST['username'];
@@ -54,9 +59,9 @@ var_dump($resultado); exit;*/
     echo "Usuario no encontrado.";
 }
 */
-// Obtener los valores del formulario
-$nombreDeUsuario = $_POST['username'];
-$contrasena = $_POST['password'];
+// Obtener los valores del formulario y purificarlos
+$nombreDeUsuario = $purifier->purify($_POST['username']);
+$contrasena = $purifier->purify($_POST['password']);
 
 try {
     // Preparar la consulta para evitar inyecciones SQL
@@ -69,26 +74,26 @@ try {
     // Ejecutar la consulta
     $stmt->execute();
     
-    // Obtener el resultado como objetos
-    $resultado = $stmt->fetchAll(PDO::FETCH_OBJ);
-    
+    // Obtener el resultado como objeto
+    $resultado = $stmt->fetch(PDO::FETCH_OBJ);
+  
     // Verificar si se encontró el usuario
     if ($resultado) {
         // Acceder a la contraseña
-        $contrasenaGuardada = $resultado[0]->AL_Contrasena;
-        //var_dump($contrasena); exit;
-        // Aquí puedes verificar la contraseña ingresada con la guardada
-        if ($contrasena == $contrasenaGuardada) {
+        $contrasenaGuardada = $resultado->AL_Contrasena;
+        //var_dump(password_verify($contrasena, $contrasenaGuardada)); exit;
+        // Verificar la contraseña usando password_verify
+        if (password_verify($contrasena, $contrasenaGuardada)) {
             // Contraseña correcta, procede con el login
-            session_Start();
+            session_start();
             $_SESSION['administrador'] = $nombreDeUsuario;
             header("Location: adminmodulo.php"); // Redirigir a otra página
             exit();
         } else {
-            echo "Contraseña incorrecta";
+            echo "Contraseña incorrecta.";
         }
     } else {
-        echo "Usuario no encontrado";
+        echo "Usuario no encontrado.";
     }
 } catch (PDOException $e) {
     echo "Error en la consulta: " . $e->getMessage();

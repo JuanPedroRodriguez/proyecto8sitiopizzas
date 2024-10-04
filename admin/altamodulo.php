@@ -16,7 +16,6 @@ if (!isset($_SESSION['administrador'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo Administrador - Pizzería</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
@@ -28,10 +27,7 @@ if (!isset($_SESSION['administrador'])) {
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="altamodulo.php" style="color: #ffffff;">Alta Administradores</a>
-      </li>
-      <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="crearmenu.php" style="color: #ffffff;">Crear Nueva Categoría y Productos</a>
       </li>
       <li class="nav-item">
@@ -53,41 +49,41 @@ if (!isset($_SESSION['administrador'])) {
 <div class="container mt-4">
     <h2>Módulo Administrador</h2>
     
-    <div id="menu" class="mt-5">
-        <h3>Gestionar Menú</h3>
-        <form action="guardar_menu.php" method="POST">
+    <!-- Sección de gestionar usuarios administradores -->
+    <div id="usuarios_admin" class="mt-5">
+        <form action="registro.php" method="POST">
             <div class="mb-3">
-                <label for="categoria" class="form-label">Categoría</label>
-                <input type="text" class="form-control" id="categoria" name="categoria" required>
+                <label for="nombre_usuario" class="form-label">Nombre de Usuario</label>
+                <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" required>
             </div>
             <div class="mb-3">
-                <label for="producto" class="form-label">Producto</label>
-                <input type="text" class="form-control" id="producto" name="producto" required>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="mb-3">
-                <label for="precio" class="form-label">Precio</label>
-                <input type="number" class="form-control" id="precio" name="precio" required>
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Agregar Producto</button>
+            <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
+
     </div>
 
-    <div id="configuracion" class="mt-5">
-        <h3>Configuración</h3>
-        <form action="guardar_configuracion.php" method="POST">
-            <div class="mb-3">
-                <label for="telefono" class="form-label">Teléfono</label>
-                <input type="text" class="form-control" id="telefono" name="telefono" required>
-            </div>
-            <div class="mb-3">
-                <label for="plataformas" class="form-label">Plataformas (ej. Uber Eats, Rappi)</label>
-                <input type="text" class="form-control" id="plataformas" name="plataformas" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar Configuración</button>
-        </form>
-    </div>
+   
 </div>
+<?php 
+// Verificar si la sesión 'alta' existe
+if (isset($_SESSION['alta']) && !empty($_SESSION['alta'])) {
+    // Obtener el valor de la sesión 'alta'
+    $alta = $_SESSION['alta'];
 
+    // Mostrar un alert con el contenido de la sesión
+    echo "<script>alert('Mensaje: " . addslashes($alta) . "');</script>";
+
+    // Destruir solo la sesión 'alta'
+    unset($_SESSION['alta']); // Elimina solo la variable de sesión 'alta'
+}
+?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>

@@ -7,6 +7,19 @@ if (!isset($_SESSION['administrador'])) {
     header("Location: myadmin.php");
     exit(); // Asegúrate de usar exit después de header
 }
+
+include 'valores/conexion.php';
+
+try {
+    $sql = "SELECT CCP_CategoriaPadreId FROM configcategoriapadre where CCP_NombreCategoriaPadre = 'menu' ";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $resultado  = $stmt->fetch(PDO::FETCH_OBJ);
+    $categoria_padre = $resultado->CCP_CategoriaPadreId;
+  //var_dump($resultado);
+} catch (PDOException $e) {
+    echo "Error en la consulta: " . $e->getMessage();
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +29,6 @@ if (!isset($_SESSION['administrador'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo Administrador - Pizzería</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
@@ -30,9 +42,6 @@ if (!isset($_SESSION['administrador'])) {
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="altamodulo.php" style="color: #ffffff;">Alta Administradores</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="crearmenu.php" style="color: #ffffff;">Crear Nueva Categoría y Productos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" style="color: #ffffff;">Inicio</a>
@@ -52,40 +61,27 @@ if (!isset($_SESSION['administrador'])) {
 
 <div class="container mt-4">
     <h2>Módulo Administrador</h2>
-    
-    <div id="menu" class="mt-5">
-        <h3>Gestionar Menú</h3>
-        <form action="guardar_menu.php" method="POST">
+
+    <!-- Sección para crear nuevas categorías -->
+    <div id="nueva_categoria" class="mt-5">
+        <h3>Crear Nueva Categoría</h3>
+        <form action="crear_categoria.php" method="POST">
             <div class="mb-3">
-                <label for="categoria" class="form-label">Categoría</label>
-                <input type="text" class="form-control" id="categoria" name="categoria" required>
+                <label for="nombre_categoria" class="form-label">Nombre de la Categoría</label>
+                <input type="text" class="form-control" id="nombre_categoria" name="nombre_categoria" required>
             </div>
             <div class="mb-3">
-                <label for="producto" class="form-label">Producto</label>
-                <input type="text" class="form-control" id="producto" name="producto" required>
+                <label for="descripcion_categoria" class="form-label">Descripción de la Categoría</label>
+                <textarea class="form-control" id="descripcion_categoria" name="descripcion_categoria" required></textarea>
             </div>
             <div class="mb-3">
-                <label for="precio" class="form-label">Precio</label>
-                <input type="number" class="form-control" id="precio" name="precio" required>
+                <input type="hidden" class="form-control" id="categoria_padre" name="categoria_padre" value="<?php echo $categoria_padre; ?>" readonly required>
             </div>
-            <button type="submit" class="btn btn-primary">Agregar Producto</button>
+            <button type="submit" class="btn btn-success">Crear Categoría</button>
         </form>
     </div>
 
-    <div id="configuracion" class="mt-5">
-        <h3>Configuración</h3>
-        <form action="guardar_configuracion.php" method="POST">
-            <div class="mb-3">
-                <label for="telefono" class="form-label">Teléfono</label>
-                <input type="text" class="form-control" id="telefono" name="telefono" required>
-            </div>
-            <div class="mb-3">
-                <label for="plataformas" class="form-label">Plataformas (ej. Uber Eats, Rappi)</label>
-                <input type="text" class="form-control" id="plataformas" name="plataformas" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar Configuración</button>
-        </form>
-    </div>
+   
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

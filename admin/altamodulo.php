@@ -5,8 +5,9 @@ session_start(); // Iniciar la sesión
 if (!isset($_SESSION['administrador'])) {
     // Redirigir a myadmin.php
     header("Location: myadmin.php");
-    exit(); // Asegúrate de usar exit después de header
+    exit();
 }
+
 ?>
 
 <!DOCTYPE html>

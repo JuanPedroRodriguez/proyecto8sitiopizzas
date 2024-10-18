@@ -1,11 +1,16 @@
 <?php 
-include 'valores/conexion.php';
-require_once '../vendor/autoload.php';
+include '../valores/conexion.php';
+require_once '../../vendor/autoload.php';
 
 // Inicializar HTML Purifier
 $config = HTMLPurifier_Config::createDefault();
 $purifier = new HTMLPurifier();
 
+if (!isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] !== 'http://127.0.0.1/proyecto7/admin/altamodulo.php') {
+    // Redirigir o mostrar mensaje de error si el acceso no es válido
+    header("Location: ../myadmin.php");
+    exit();
+}
 // Verificar si el formulario fue enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Limpiar los datos de entrada
@@ -33,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             session_start();
             $_SESSION['alta'] = 'Registro Exitoso';
-            header("Location: altamodulo.php");
+            header("Location: ../altamodulo.php");
             exit();
         } catch (PDOException $e) {
             // Manejo de errores por violación de UNIQUE

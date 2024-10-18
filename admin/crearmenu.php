@@ -55,6 +55,7 @@ try {
     <title>Módulo Administrador - Pizzería</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -82,6 +83,14 @@ try {
       </li>
     </ul>
   </div>
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+            <!-- Ícono de usuario blanco con Font Awesome y enlace de logout -->
+            <a class="nav-link" href="logout.php" style="color: #ffffff;">
+                <i class="fas fa-user"></i> Cerrar sesión
+            </a>
+        </li>
+    </ul>
 </nav>
 
 <div class="container mt-4">
@@ -166,7 +175,7 @@ try {
                                                             <tr>
                                                                 <td><?php echo htmlspecialchars($producto['MP_NombreProducto']); ?></td>
                                                                 <td><?php echo htmlspecialchars($producto['MP_DescripcionProducto']); ?></td>
-                                                                <td>$<?php echo number_format($producto['MP_PrecioProducto'], 2); ?></td>
+                                                                <td>$<?php echo $producto['MP_PrecioProducto']; ?></td>
                                                                 <td>
                                                                     <img src="<?php echo htmlspecialchars($producto['MP_ImagenProducto']); ?>" alt="Imagen del producto" width="50" height="50">
                                                                 </td>

@@ -12,17 +12,17 @@
           
           <div class="mb-3">
             <label for="nombreProducto" class="form-label">Nombre del Producto</label>
-            <input type="text" class="form-control" id="nombreProducto" name="nombre_producto" required>
+            <input type="text" class="form-control" id="nombreProducto" name="nombre_producto" value="<?php echo $producto['MP_NombreProducto']; ?>">
           </div>
 
           <div class="mb-3">
             <label for="descripcionProducto" class="form-label">Descripción</label>
-            <textarea class="form-control" id="descripcionProducto" name="descripcion_producto" rows="3" required></textarea>
+            <textarea class="form-control" id="descripcionProducto" name="descripcion_producto" rows="3" value="<?php echo $producto['MP_DescripcionProducto']; ?>"></textarea>
           </div>
 
           <div class="mb-3">
             <label for="precioProducto" class="form-label">Precio</label>
-            <input type="number" class="form-control" id="precioProducto" name="precio_producto" required>
+            <input type="number" class="form-control" id="precioProducto" name="precio_producto" value="<?php echo $producto['MP_PrecioProducto']; ?>">
           </div>
 
           <div class="mb-3">

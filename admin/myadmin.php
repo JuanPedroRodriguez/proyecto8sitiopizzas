@@ -32,7 +32,7 @@
                     <h4>Iniciar Sesión - Administrador</h4>
                 </div>
                 <div class="card-body">
-                    <form action="procesadmin.php" method="POST">
+                    <form action="login.php" method="POST">
                         <div class="mb-3">
                             <label for="username" class="form-label">Usuario</label>
                             <input type="text" class="form-control" id="username" name="username" required>

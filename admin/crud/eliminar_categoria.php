@@ -2,6 +2,11 @@
 include '../valores/conexion.php';
 session_start();
 
+if (!isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] !== 'http://127.0.0.1/proyecto7/admin/crearmenu.php') {
+    // Redirigir o mostrar mensaje de error si el acceso no es válido
+    header("Location: ../myadmin.php");
+    exit();
+}
 // Verificar si el formulario fue enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener el ID de la categoría

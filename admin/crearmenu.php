@@ -73,7 +73,7 @@ try {
         <a class="nav-link" href="#" style="color: #ffffff;">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #ffffff;">header</a>
+        <a class="nav-link" href="headermodulo.php" style="color: #ffffff;">header</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" style="color: #ffffff;">footer</a>

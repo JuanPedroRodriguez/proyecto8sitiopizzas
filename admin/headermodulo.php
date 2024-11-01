@@ -51,7 +51,7 @@ include 'crud/select_header.php';
         <a class="nav-link" href="headermodulo.php" style="color: #ffffff;">Header</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #ffffff;">Footer</a>
+        <a class="nav-link" href="footermodulo.php" style="color: #ffffff;">Footer</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" style="color: #ffffff;">Contenido</a>

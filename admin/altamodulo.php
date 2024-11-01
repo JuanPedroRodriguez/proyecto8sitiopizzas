@@ -60,7 +60,7 @@ include 'crud/select_usuarios.php';
         <a class="nav-link" href="headermodulo.php" style="color: #ffffff;">header</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #ffffff;">footer</a>
+        <a class="nav-link" href="footermodulo.php" style="color: #ffffff;">footer</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" style="color: #ffffff;">contenido</a>

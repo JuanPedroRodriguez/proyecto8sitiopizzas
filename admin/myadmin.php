@@ -23,7 +23,13 @@
 </head>
 
 <body>
-
+<?php
+session_start();
+if (isset($_SESSION['errorlogin'])) {
+    echo '<script>alert("'.$_SESSION['errorlogin'].'"); </script>';
+    unset($_SESSION['errorlogin']);
+  }
+?>
 <div class="container login-container">
     <div class="row justify-content-center">
         <div class="col-md-6">

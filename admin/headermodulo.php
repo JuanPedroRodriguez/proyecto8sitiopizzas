@@ -32,43 +32,60 @@ include 'crud/select_header.php';
 <body>
 
 <nav class="navbar navbar-expand-lg" style="background-color: #006391;">
-  <a class="navbar-brand" href="#" style="color: #ffffff;">Pizzería</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="adminmodulo.php" style="color: #ffffff;">Pizzería</a>
+    <!-- Botón "hamburguesa" -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="filter: invert(100%);"></span>
+    </button>
+    <!--evitamos que el icono de hamburguesa se vaya hasta el final-->
+    <ul class="navbar-nav ms-auto">
       <li class="nav-item">
-        <a class="nav-link" href="altamodulo.php" style="color: #ffffff;">Alta Administradores</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="crearmenu.php" style="color: #ffffff;">Crear Nueva Categoría y Productos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #ffffff;">Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="headermodulo.php" style="color: #ffffff;">Header</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="footermodulo.php" style="color: #ffffff;">Footer</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #ffffff;">Contenido</a>
+        <a class="nav-link" href="#" style="color: #ffffff;">
+        </a>
       </li>
     </ul>
+    <!-- Elementos del menú -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="altamodulo.php" style="color: #ffffff;">Administradores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="crearmenu.php" style="color: #ffffff;">Menú</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="adminmodulo.php" style="color: #ffffff;">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="headermodulo.php" style="color: #ffffff;">Header</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="footermodulo.php" style="color: #ffffff;">Footer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color: #ffffff;">Contenido</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="logout.php" style="color: #ffffff;">
+            <i class="fas fa-user"></i> Cerrar sesión
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
-  <ul class="navbar-nav ms-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="logout.php" style="color: #ffffff;">
-        <i class="fas fa-user"></i> Cerrar sesión
-      </a>
-    </li>
-  </ul>
 </nav>
 
 <div class="container mt-4">
-    <h2>Módulo Administrador</h2>
+    <center><h2>Módulo Administrador <i class="bi bi-person-fill-gear"></i></h2>
+          <div class="col-12 col-sm-1 col-md-2">
+            <a href="adminmodulo.php" class="btn btn-primary w-100">
+              Inicio <i class="bi bi-house"></i>
+            </a>
+          </div>
+    </center><br><br>
     
     <!-- Formulario para gestionar el Header -->
     <div id="configHeader" class="mt-5">
@@ -139,5 +156,6 @@ if (empty($configuracion_header)) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

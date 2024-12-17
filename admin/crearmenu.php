@@ -60,55 +60,79 @@ try {
 <body>
 
 <nav class="navbar navbar-expand-lg" style="background-color: #006391;">
-  <a class="navbar-brand" href="#" style="color: #ffffff;">Pizzería</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="altamodulo.php" style="color: #ffffff;">Alta Administradores</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #ffffff;">Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="headermodulo.php" style="color: #ffffff;">header</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="footermodulo.php" style="color: #ffffff;">footer</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #ffffff;">contenido</a>
-      </li>
-    </ul>
-  </div>
+  <div class="container-fluid">
+    <!-- Logo de la pizzería -->
+    <a class="navbar-brand" href="adminmodulo.php" style="color: #ffffff;">Pizzería</a>
+    
+    <!-- Botón "hamburguesa" -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="filter: invert(100%);"></span>
+    </button>
+    <!--evitamos que el icono de hamburguesa se vaya hasta el final-->
     <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-            <!-- Ícono de usuario blanco con Font Awesome y enlace de logout -->
-            <a class="nav-link" href="logout.php" style="color: #ffffff;">
-                <i class="fas fa-user"></i> Cerrar sesión
-            </a>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: #ffffff;">
+        </a>
+      </li>
     </ul>
+    <!-- Elementos del menú -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="altamodulo.php" style="color: #ffffff;">Administradores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="crearmenu.php" style="color: #ffffff;">Menú</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color: #ffffff;">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="headermodulo.php" style="color: #ffffff;">Header</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="footermodulo.php" style="color: #ffffff;">Footer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color: #ffffff;">Contenido</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="logout.php" style="color: #ffffff;">
+            <i class="fas fa-user"></i> Cerrar sesión
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+  </div>
 </nav>
 
-<div class="container mt-4">
-    <h2>Módulo Administrador</h2>
 
+<div class="container mt-4">
+    <center><h2>Módulo Administrador <i class="bi bi-person-fill-gear"></i></h2>
+          <div class="col-12 col-sm-1 col-md-2">
+            <a href="adminmodulo.php" class="btn btn-primary w-100">
+              Inicio <i class="bi bi-house"></i>
+            </a>
+          </div>
+    </center><br><br>
+    <h2>Editar Menú y platillos <img src="../assets/imagenes/pizza.png" alt="" class="img-fluid" style="width: 1.5rem; height: 1.5rem;"></h2>
+        
     <!-- Sección para crear nuevas categorías -->
     <div id="nueva_categoria" class="mt-5">
-        <h3>Crear Nueva Categoría</h3>
+        <h3>Crear Nueva Categoría (Pizzas, Pastas, Bebidas, etc.)</h3><br>
         <form action="crud/crear_categoria.php" method="POST">
-            <div class="mb-3">
+            <div class="mb-3 col-4">
                 <label for="nombre_categoria" class="form-label">Nombre de la Categoría</label>
                 <input type="text" class="form-control" id="nombre_categoria" name="nombre_categoria" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 col-4">
                 <label for="descripcion_categoria" class="form-label">Descripción de la Categoría</label>
                 <textarea class="form-control" id="descripcion_categoria" name="descripcion_categoria" required></textarea>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 col-4">
                 <input type="hidden" class="form-control" id="categoria_padre" name="categoria_padre" value="<?php echo $categoria_padre; ?>" readonly required>
             </div>
             <button type="submit" class="btn btn-success">Crear Categoría</button>
@@ -116,7 +140,7 @@ try {
     </div> <br>
         <!-- HTML para mostrar las categorías -->
     <div id="lista_categorias" class="mt-5">
-        <h3>Lista de Categorías</h3>
+        <h3><span class="badge text-bg-secondary">Lista de Categorías</span></h3>
         <?php if (!empty($categorias)): ?>
             <ul>
                 <?php foreach ($categorias as $categoria): 

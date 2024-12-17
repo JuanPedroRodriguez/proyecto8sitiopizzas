@@ -45,19 +45,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Error al subir la imagen.";
             exit();
         }
+        $ruta_imagen = '../assets/imagenes/' . basename($_FILES['imagen_1']['name']);
     } else {
         $ruta_imagen = null; // Si no hay imagen, dejar el campo como null
     }
-    $ruta_imagen = '../assets/imagenes/' . basename($_FILES['imagen_1']['name']);
+    
     //var_dump($ruta_imagen); exit;
     // Consulta SQL para actualizar los datos en la tabla `configgen`
     $sql = " UPDATE configgen 
             SET CG_ColorFondo = :color_fondo,
                 CG_ColorTextoNombrePestaña = :color_texto_nombre_pestana,
-                CG_ColorFondoNombrePestaña = :color_fondo_nombre_pestana,
-                CG_Imagen1 = :ruta_imagen
-            WHERE CG_CCP_CategoriaPadreId = :categoria_padre_id
-              AND CG_CCP_NombreCategoriaPadre = :nombre_categoria_padre_id";
+                CG_ColorFondoNombrePestaña = :color_fondo_nombre_pestana ";
+                if ($ruta_imagen != null) {
+                    $sql.= ", CG_Imagen1 = :ruta_imagen ";
+                }
+                
+           $sql.= " WHERE CG_CCP_CategoriaPadreId = :categoria_padre_id
+              AND CG_CCP_NombreCategoriaPadre = :nombre_categoria_padre_id ";
 
     try {
         $stmt = $conn->prepare($sql);
@@ -66,7 +70,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':color_fondo', $color_fondo, PDO::PARAM_STR);
         $stmt->bindParam(':color_texto_nombre_pestana', $color_texto_nombre_pestana, PDO::PARAM_STR);
         $stmt->bindParam(':color_fondo_nombre_pestana', $color_fondo_nombre_pestana, PDO::PARAM_STR);
-        $stmt->bindParam(':ruta_imagen', $ruta_imagen, PDO::PARAM_STR);
+        if ($ruta_imagen != null) {
+            $stmt->bindParam(':ruta_imagen', $ruta_imagen, PDO::PARAM_STR);
+        }
+        
         $stmt->bindParam(':categoria_padre_id', $categoria_padre_id, PDO::PARAM_STR);
         $stmt->bindParam(':nombre_categoria_padre_id', $nombre_categoria_padre_id, PDO::PARAM_STR);
 

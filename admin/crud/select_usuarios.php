@@ -4,6 +4,7 @@ try {
     $sql = "SELECT 
                 AL_SocioId, 
                 AL_NombreDeUsuario, 
+                AL_Nombre,
                 AL_PrimerApellido,
                 AL_SegundoApellido,
                 AL_Correo

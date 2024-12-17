@@ -46,10 +46,12 @@ try {
             header("Location: adminmodulo.php"); // Redirigir a otra página
             exit();
         } else {
-            echo "Contraseña incorrecta.";
+            session_start();
+            $_SESSION['errorlogin'] = 'Contraseña Incorrecta';
+            header("Location: adminmodulo.php"); // Redirigir a otra página
         }
     } else {
-        echo "Usuario no encontrado.";
+        $alerta = "Usuario no encontrado";
     }
 } catch (PDOException $e) {
     echo "Error en la consulta: " . $e->getMessage();

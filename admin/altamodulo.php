@@ -44,73 +44,110 @@ include 'crud/select_usuarios.php';
 <body>
 
 <nav class="navbar navbar-expand-lg" style="background-color: #006391;">
-  <a class="navbar-brand" href="#" style="color: #ffffff;">Pizzería</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="crearmenu.php" style="color: #ffffff;">Crear Nueva Categoría y Productos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #ffffff;">Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="headermodulo.php" style="color: #ffffff;">header</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="footermodulo.php" style="color: #ffffff;">footer</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #ffffff;">contenido</a>
-      </li>
-      
-    </ul>
-  </div>
+  <div class="container-fluid">
+    <!-- Logo de la pizzería -->
+    <a class="navbar-brand" href="adminmodulo.php" style="color: #ffffff;">Pizzería</a>
+    
+    <!-- Botón "hamburguesa" -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="filter: invert(100%);"></span>
+    </button>
+    <!--evitamos que el icono de hamburguesa se vaya hasta el final-->
     <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-            <!-- Ícono de usuario blanco con Font Awesome y enlace de logout -->
-            <a class="nav-link" href="logout.php" style="color: #ffffff;">
-                <i class="fas fa-user"></i> Cerrar sesión
-            </a>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: #ffffff;">
+        </a>
+      </li>
     </ul>
+    <!-- Elementos del menú -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="altamodulo.php" style="color: #ffffff;">Administradores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="crearmenu.php" style="color: #ffffff;">Menú</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color: #ffffff;">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="headermodulo.php" style="color: #ffffff;">Header</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="footermodulo.php" style="color: #ffffff;">Footer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color: #ffffff;">Contenido</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="logout.php" style="color: #ffffff;">
+            <i class="fas fa-user"></i> Cerrar sesión
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+  </div>
 </nav>
 
+
 <div class="container mt-4">
-    <h2>Módulo Administrador</h2>
-    
+    <center><h2>Módulo Administrador <i class="bi bi-person-fill-gear"></i></h2>
+          <div class="col-12 col-sm-1 col-md-2">
+            <a href="adminmodulo.php" class="btn btn-primary w-100">
+              Inicio <i class="bi bi-house"></i>
+            </a>
+          </div>
+    </center><br><br>
+  <center>
+    <h2>Dar de alta un usuario nuevo <i class="bi bi-person-circle"></i></h2>
+      
     <!-- Sección de gestionar usuarios administradores -->
-    <div id="usuarios_admin" class="mt-5">
+    <div id="usuarios_admin" class="mt-5 col-12">
         <form action="crud/registro.php" method="POST">
-            <div class="mb-3">
-                <label for="nombre_usuario" class="form-label">Nombre de Usuario</label>
+            <div class="mb-3 col-4">
+                <label for="nombre_usuario" class="form-label"><span class="badge text-bg-secondary">Nombre de Usuario</span></label>
                 <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" required>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
+            <div class="mb-3 col-4">
+                <label for="nombre_usuario" class="form-label"><span class="badge text-bg-secondary">Nombre</span></label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="mb-3 col-4">
+                <label for="nombre_usuario" class="form-label"><span class="badge text-bg-secondary">Primer Apellido</span></label>
+                <input type="text" class="form-control" id="primer_apellido" name="primer_apellido" required>
+            </div>
+            <div class="mb-3 col-4">
+                <label for="nombre_usuario" class="form-label"><span class="badge text-bg-secondary">Segundo Apellido</span></label>
+                <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido" required>
+            </div>
+            <div class="mb-3 col-4">
+                <label for="email" class="form-label"><span class="badge text-bg-secondary">Email</span></label>
                 <input type="email" class="form-control" id="email" name="email" required>
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
+            <div class="mb-3 col-4">
+                <label for="password" class="form-label"><span class="badge text-bg-secondary">Contraseña</span></label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
 
     </div>
-
-   
+    </center>
 </div><br>
 <div class="container mt-4">
     <h2>Usuarios Administradores</h2>
 
     <?php if (!empty($usuarios)): ?>
+      <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Nombre de Usuario</th>
+                    <th>Nombre</th>
                     <th>Primer Apellido</th>
                     <th>Segundo Apellido</th>
                     <th>Email</th>
@@ -121,46 +158,49 @@ include 'crud/select_usuarios.php';
                 <?php foreach ($usuarios as $usuario): ?>
                   <tr>
                     <td><?php echo htmlspecialchars($usuario['AL_NombreDeUsuario']); ?></td>
+                    <td><?php echo htmlspecialchars($usuario['AL_Nombre']); ?></td>
                     <td><?php echo htmlspecialchars($usuario['AL_PrimerApellido']); ?></td>
                     <td><?php echo htmlspecialchars($usuario['AL_SegundoApellido']); ?></td>
                     <td><?php echo htmlspecialchars($usuario['AL_Correo']); ?></td>
                     <td>
-                    <?php 
-                      if ($usuario['AL_SocioId'] === '162e9f43-81db-11ef-b45d-4cd7178be01c' && $_SESSION['administradorId'] !== '162e9f43-81db-11ef-b45d-4cd7178be01c') { 
-                      ?>
-                          <!-- Botón para abrir el modal de modificación (deshabilitado) -->
-                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalModificarUsuario_<?php echo $usuario['AL_SocioId']; ?>" disabled>
-                              Modificar
-                          </button> 
-                          <!-- Botón para eliminar (deshabilitado) -->
-                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarUsuario_<?php echo $usuario['AL_SocioId']; ?>" disabled>
-                              Eliminar Usuario
-                          </button>
-                      <?php 
-                      } elseif ($usuario['AL_SocioId'] === '162e9f43-81db-11ef-b45d-4cd7178be01c' && $_SESSION['administradorId'] === '162e9f43-81db-11ef-b45d-4cd7178be01c') { 
-                      ?>
-                          <!-- Botón para abrir el modal de modificación -->
-                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalModificarUsuario_<?php echo $usuario['AL_SocioId']; ?>">
-                              Modificar
-                          </button> 
-                          <!-- Botón para eliminar -->
-                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarUsuario_<?php echo $usuario['AL_SocioId']; ?>">
-                              Eliminar Usuario
-                          </button>
-                      <?php 
-                        }else{ 
-                      ?>
-                          <!-- Botón para abrir el modal de modificación -->
-                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalModificarUsuario_<?php echo $usuario['AL_SocioId']; ?>">
-                                  Modificar
-                          </button> 
-                          <!-- Botón para eliminar -->
-                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarUsuario_<?php echo $usuario['AL_SocioId']; ?>">
-                              Eliminar Usuario
-                          </button>
-                      <?php 
-                      } 
-                      ?>
+                      <div class="d-flex flex-wrap gap-1">
+                        <?php //si en la tabla aparece el registro del usuario admin pero el login es con otro usuario se bloquean los botones
+                        if ($usuario['AL_SocioId'] === '162e9f43-81db-11ef-b45d-4cd7178be01c' && $_SESSION['administradorId'] !== '162e9f43-81db-11ef-b45d-4cd7178be01c') { 
+                        ?>
+                            <!-- Botón para abrir el modal de modificación (deshabilitado) -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalModificarUsuario_<?php echo $usuario['AL_SocioId']; ?>" disabled>
+                                Modificar
+                            </button> 
+                            <!-- Botón para eliminar (deshabilitado) -->
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarUsuario_<?php echo $usuario['AL_SocioId']; ?>" disabled>
+                                Eliminar
+                            </button>
+                        <?php //si en la tabla aparece el registro del usuario admin y el login es con usuario administrador se habilitan los botones
+                        } elseif ($usuario['AL_SocioId'] === '162e9f43-81db-11ef-b45d-4cd7178be01c' && $_SESSION['administradorId'] === '162e9f43-81db-11ef-b45d-4cd7178be01c') { 
+                        ?>
+                            <!-- Botón para abrir el modal de modificación -->
+                            <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modalModificarUsuario_<?php echo $usuario['AL_SocioId']; ?>">
+                                Modificar
+                            </button> 
+                            <!-- Botón para eliminar -->
+                            <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#modalEliminarUsuario_<?php echo $usuario['AL_SocioId']; ?>">
+                                Eliminar
+                            </button>
+                        <?php 
+                          }else{ 
+                        ?>
+                            <!-- Botón para abrir el modal de modificación -->
+                            <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modalModificarUsuario_<?php echo $usuario['AL_SocioId']; ?>">
+                                    Modificar
+                            </button> 
+                            <!-- Botón para eliminar -->
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarUsuario_<?php echo $usuario['AL_SocioId']; ?>">
+                                Eliminar
+                            </button>
+                        <?php 
+                        } 
+                        ?>
+                      </div>
                     </td>
                   </tr>
                   
@@ -171,7 +211,7 @@ include 'crud/select_usuarios.php';
                 <?php endforeach; ?>
             </tbody>
         </table>
-        
+      </div>  
     <?php else: ?>
         <p>No hay usuarios administradores registrados.</p>
     <?php endif; ?>

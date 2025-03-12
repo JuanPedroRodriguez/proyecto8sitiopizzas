@@ -18,6 +18,7 @@ include 'crud/leerproductos.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo Administrador - Pizzería</title>
+    <link rel="icon" type="image/x-icon" href="../assets/imagenes/adminlogo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -62,6 +63,9 @@ include 'crud/leerproductos.php';
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" style="color: #ffffff;">Contenido</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="inventariomodulo.php" style="color: #ffffff;">Inventario</a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
@@ -122,6 +126,12 @@ include 'crud/leerproductos.php';
       <div class="col-12 col-sm-1 col-md-2">
         <a href="#" class="btn btn-dark w-100">
           Contenido <i class="bi bi-card-heading"></i>
+        </a>
+      </div>
+      <!-- Botón Inventario -->
+      <div class="col-12 col-sm-1 col-md-2">
+        <a href="inventariomodulo.php" class="btn btn-secondary w-100">
+        Inventario <i class="bi bi-card-heading"></i>
         </a>
       </div>
     </div>

@@ -37,6 +37,7 @@ include 'crud/select_usuarios.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo Administrador - Pizzería</title>
+    <link rel="icon" type="image/x-icon" href="../assets/imagenes/adminlogo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -102,7 +103,7 @@ include 'crud/select_usuarios.php';
             </a>
           </div>
     </center><br><br>
-  <center>
+  
     <h2>Dar de alta un usuario nuevo <i class="bi bi-person-circle"></i></h2>
       
     <!-- Sección de gestionar usuarios administradores -->
@@ -136,7 +137,7 @@ include 'crud/select_usuarios.php';
         </form>
 
     </div>
-    </center>
+  
 </div><br>
 <div class="container mt-4">
     <h2>Usuarios Administradores</h2>

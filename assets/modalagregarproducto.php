@@ -1,5 +1,5 @@
 <!-- Modal para agregar producto -->
-<div class="modal fade" id="agregarProductoModal" tabindex="-1" aria-labelledby="agregarProductoLabel" aria-hidden="true">
+<div class="modal fade" id="agregarProductoModal<?php echo $categoria['MC_CategoriaId']; ?>" tabindex="-1" aria-labelledby="agregarProductoLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="crud/crear_producto.php" method="POST" enctype="multipart/form-data">
@@ -15,7 +15,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="descripcion_producto" class="form-label">Descripción del Producto</label>
-                        <textarea class="form-control" id="descripcion_producto" name="descripcion_producto" required></textarea>
+                        <textarea class="form-control" id="descripcion_producto" name="descripcion_producto"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="precio_producto" class="form-label">Precio</label>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="imagen_producto" class="form-label">Imagen del Producto</label>
-                        <input type="file" class="form-control" id="imagen_producto" name="imagen_producto" accept="image/*" required>
+                        <input type="file" class="form-control" id="imagen_producto" name="imagen_producto" accept="image/*" >
                     </div>
                 </div>
                 <div class="modal-footer">

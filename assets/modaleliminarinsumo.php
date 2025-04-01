@@ -10,8 +10,8 @@
                                     ¿Estás seguro de que deseas eliminar el insumo "<strong><?php echo htmlspecialchars($insumo['In_NombreInsumo']); ?></strong>"?
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="crud/.php" method="POST">
-                                        <input type="hidden" name="producto_id" value="<?php echo $insumo['In_InsumoId']; ?>">
+                                    <form action="crud/eliminar_insumo.php" method="POST">
+                                        <input type="hidden" name="insumoid" value="<?php echo $insumo['In_InsumoId']; ?>">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                         <button type="submit" class="btn btn-danger">Eliminar</button>
                                     </form>

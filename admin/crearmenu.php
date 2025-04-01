@@ -131,7 +131,7 @@ try {
             </div>
             <div class="mb-3 col-4">
                 <label for="descripcion_categoria" class="form-label">Descripción de la Categoría</label>
-                <textarea class="form-control" id="descripcion_categoria" name="descripcion_categoria" required></textarea>
+                <textarea class="form-control" id="descripcion_categoria" name="descripcion_categoria" ></textarea>
             </div>
             <div class="mb-3 col-4">
                 <input type="hidden" class="form-control" id="categoria_padre" name="categoria_padre" value="<?php echo $categoria_padre; ?>" readonly required>
@@ -173,7 +173,7 @@ try {
                                     <div id="collapse<?php echo $categoria['MC_CategoriaId']; ?>" class="accordion-collapse collapse" aria-labelledby="heading<?php echo $categoria['MC_CategoriaId']; ?>" data-bs-parent="#accordionCategorias">
                                         <div class="accordion-body">
                                             <!-- Botón para agregar un producto (abre modal) -->
-                                            <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#agregarProductoModal" data-categoria-id="<?php echo $categoria['MC_CategoriaId']; ?>">
+                                            <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#agregarProductoModal<?php echo $categoria['MC_CategoriaId']; ?>" data-categoria-id="<?php echo $categoria['MC_CategoriaId']; ?>">
                                                 Agregar Producto
                                             </button>
 
@@ -219,6 +219,8 @@ try {
 
                                                             
                                                 <?php
+                                                        include '../assets/modalmodificarproducto.php';
+                                                        include '../assets/modaleliminarproducto.php';
                                                         endforeach;
                                                     else :
                                                 ?>
@@ -241,9 +243,8 @@ try {
 
                         <?php include '../assets/modalmodificar.php'; 
                               include '../assets/modaleliminar.php'; 
-                              include '../assets/modaleliminarproducto.php';
                               include '../assets/modalagregarproducto.php';
-                              include '../assets/modalmodificarproducto.php'; 
+                               
                         ?>
                         <hr>
                 <?php endforeach; ?>

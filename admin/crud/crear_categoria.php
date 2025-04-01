@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $categoria_padre_id = $_POST['categoria_padre']; // Esto viene como hidden en el formulario
     //var_dump($categoria_padre_id); exit; 
     // Verificar si los campos no están vacíos
-    if (!empty($nombre_categoria) && !empty($descripcion_categoria)) {
+    if (!empty($nombre_categoria)) {
         
         // Preparar la consulta SQL para insertar los datos
         $sql = "INSERT INTO menucategoria 

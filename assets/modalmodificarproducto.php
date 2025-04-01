@@ -17,7 +17,7 @@
 
           <div class="mb-3">
             <label for="descripcionProducto" class="form-label">Descripción</label>
-            <textarea class="form-control" id="descripcionProducto" name="descripcion_producto" rows="3" value="<?php echo $producto['MP_DescripcionProducto']; ?>"></textarea>
+            <textarea class="form-control" id="descripcionProducto" name="descripcion_producto" rows="3" ><?php echo $producto['MP_DescripcionProducto']; ?></textarea>
           </div>
 
           <div class="mb-3">

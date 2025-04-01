@@ -90,7 +90,7 @@ include 'crud/leerproductos.php';
   <div class="justify-content-center align-items-center col-12">
     <div class="d-flex flex-column flex-sm-row text-center justify-content flex-wrap gap-3">
       <!-- Botón Alta Administradores -->
-      <div class="col-12 col-sm-2 col-md-3">
+      <div class="col-12 col-sm-2 col-md-2">
         <a href="altamodulo.php" class="btn btn-primary w-100">
           Administradores <i class="bi bi-person"></i>
         </a>
@@ -131,7 +131,7 @@ include 'crud/leerproductos.php';
       <!-- Botón Inventario -->
       <div class="col-12 col-sm-1 col-md-2">
         <a href="inventariomodulo.php" class="btn btn-secondary w-100">
-        Inventario <i class="bi bi-card-heading"></i>
+        Inventario <i class="bi bi-clipboard2-data"></i>
         </a>
       </div>
     </div>

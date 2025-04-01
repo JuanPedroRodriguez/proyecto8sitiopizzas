@@ -7,8 +7,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="crud/.php" method="POST" enctype="multipart/form-data">
-          <input type="hidden" name="producto_id" id="productoId" value="<?php echo $insumo['In_InsumoId']; ?>"> <!-- ID del producto a modificar -->
+        <form action="crud/modificar_insumos.php" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="insumoid" id="insumoid" value="<?php echo $insumo['In_InsumoId']; ?>"> <!-- ID del producto a modificar -->
  
           <div class="mb-3">
             <label for="nombre_insumo" class="form-label">Nombre del insumo</label>
@@ -53,11 +53,11 @@
           <div class="mb-3">
             <label for="imagenProducto" class="form-label">Imagen del Producto</label>
             <?php if ($insumo['In_ImagenInsumo'] == '' or $insumo['In_ImagenInsumo'] == null) { ?>
-            <input type="file" class="form-control" id="imagenProducto" name="imagen_producto"> 
+            <input type="file" class="form-control" id="imageninsumo" name="imageninsumo"> 
             <?php }else {?>
             <img src="<?php echo htmlspecialchars($insumo['In_ImagenInsumo']); ?>"  width="50" height="50"><br>
             <span>¿Quiere cambiar la imagen?</span><br>
-            <input type="file" class="form-control" id="imagenProducto" name="imagen_producto"> 
+            <input type="file" class="form-control" id="imageninsumo" name="imageninsumo"> 
             <?php }?>
           </div>
 

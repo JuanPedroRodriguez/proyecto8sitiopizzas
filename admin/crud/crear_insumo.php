@@ -6,7 +6,9 @@ session_start();
 $config = HTMLPurifier_Config::createDefault();
 $purifier = new HTMLPurifier();
 
-if (!isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] !== 'http://127.0.0.1/proyecto7/admin/inventariomodulo.php') {
+$navegador = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH);
+$Navegador = 'http://127.0.0.1'.$navegador;
+if ($Navegador !== 'http://127.0.0.1/proyecto7/admin/inventariomodulo.php') {
     // Redirigir o mostrar mensaje de error si el acceso no es válido
     header("Location: ../myadmin.php");
     exit();
@@ -28,14 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Configuración para la carga de la imagen (si se subió una imagen)
     if (!empty($_FILES['imagen_insumo']['name'])) {
         $nombre_imagen = $_FILES['imagen_insumo']['name'];
-        $ruta_imagen = '../../assets/imagenes/' . basename($nombre_imagen);
+        $ruta_imagen = '../../assets/imagenesInsumos/' . basename($nombre_imagen);
 
         // Mover la imagen al directorio de imágenes
         if (!move_uploaded_file($_FILES['imagen_insumo']['tmp_name'], $ruta_imagen)) {
             echo "Error al subir la imagen.";
             exit();
         }
-        $ruta_imagen = '../assets/imagenes/' . basename($_FILES['imagen_insumo']['name']);
+        $ruta_imagen = '../assets/imagenesInsumos/' . basename($_FILES['imagen_insumo']['name']);
     } else {
         $ruta_imagen = null; // Si no hay imagen, dejar el campo como null
     }
@@ -51,12 +53,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare($sql);
             // Asignar valores a los parámetros
             $stmt->bindParam(':NombreInsumo', $nombre_insumo, PDO::PARAM_STR);
-            $stmt->bindParam(':NumeroPiezas', $piezas, PDO::PARAM_INT);
-            $stmt->bindParam(':PesoGramos', $gramos, PDO::PARAM_INT);
-            $stmt->bindParam(':PesoKilos', $kilogramos, PDO::PARAM_INT);
-            $stmt->bindParam(':Mililitros', $mililitros, PDO::PARAM_INT);
-            $stmt->bindParam(':Litros', $litros, PDO::PARAM_INT);
-            $stmt->bindParam(':Porcion', $porcion, PDO::PARAM_INT);
+            $stmt->bindParam(':NumeroPiezas', $piezas, PDO::PARAM_STR);
+            $stmt->bindParam(':PesoGramos', $gramos, PDO::PARAM_STR);
+            $stmt->bindParam(':PesoKilos', $kilogramos, PDO::PARAM_STR);
+            $stmt->bindParam(':Mililitros', $mililitros, PDO::PARAM_STR);
+            $stmt->bindParam(':Litros', $litros, PDO::PARAM_STR);
+            $stmt->bindParam(':Porcion', $porcion, PDO::PARAM_STR);
             $stmt->bindParam(':Otro', $otro, PDO::PARAM_STR);
             $stmt->bindParam(':ImagenInsumo', $ruta_imagen, PDO::PARAM_STR);
            
